@@ -80,7 +80,7 @@ class CategoryItem(Base):
        return dictObj
 
 
-engine = create_engine('sqlite:///catalog.db')
+engine = create_engine('postgresql://vagrant:ashok123@localhost/catalog')
  
 
 Base.metadata.create_all(engine)
