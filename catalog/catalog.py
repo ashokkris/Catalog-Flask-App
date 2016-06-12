@@ -19,10 +19,11 @@ from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, User, CategoryItem
 
 app = Flask(__name__)
+APP_PATH = '/var/www/catalog/catalog'
 CLIENT_ID = \
-    json.loads(open('client_secret.json', 'r').read())['web']['client_id']
+    json.loads(open(APP_PATH + 'client_secret.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Sports Catalog App"
-UPLOAD_FOLDER = './uploads'
+UPLOAD_FOLDER = APP_PATH + 'uploads'
 ALLOWED_EXTENSIONS = set(['png', 'gif', 'jpg', 'jpeg'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
