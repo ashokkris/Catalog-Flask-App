@@ -26,6 +26,7 @@ APPLICATION_NAME = "Sports Catalog App"
 UPLOAD_FOLDER = APP_PATH + 'uploads'
 ALLOWED_EXTENSIONS = set(['png', 'gif', 'jpg', 'jpeg'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['APP_PATH'] = APP_PATH
 
 # Connect to Database and create database session
 engine = create_engine('postgresql://vagrant:ashok123@localhost/catalog')
@@ -64,7 +65,7 @@ def gconnect():
     code = request.data
     # Convert autorization code to credentials object using flow exchange api
     try:
-        oauth_flow = flow_from_clientsecrets(APP_PATH + 'client_secret.json', scope='')
+        oauth_flow = flow_from_clientsecrets(app.config['APP_PATH'] + 'client_secret.json', scope='')
         oauth_flow .redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(code)
     except FlowExchangeError:
