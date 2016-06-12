@@ -64,7 +64,7 @@ def gconnect():
     code = request.data
     # Convert autorization code to credentials object using flow exchange api
     try:
-        oauth_flow = flow_from_clientsecrets('client_secret.json', scope='')
+        oauth_flow = flow_from_clientsecrets(APP_PATH + 'client_secret.json', scope='')
         oauth_flow .redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(code)
     except FlowExchangeError:
