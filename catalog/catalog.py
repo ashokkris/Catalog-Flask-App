@@ -19,7 +19,7 @@ from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, User, CategoryItem
 
 app = Flask(__name__)
-APP_PATH = '/var/www/catalog/catalog'
+APP_PATH = '/var/www/catalog/catalog/'
 CLIENT_ID = \
     json.loads(open(APP_PATH + 'client_secret.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Sports Catalog App"
