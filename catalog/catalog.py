@@ -29,7 +29,6 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['APP_PATH'] = APP_PATH
 
 # Connect to Database and create database session
-#engine = create_engine('postgresql://vagrant:ashok123@localhost/catalog')
 engine = init_db('postgresql://vagrant:ashok123@localhost/catalog')
 Base.metadata.bind = engine
 

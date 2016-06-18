@@ -1,9 +1,9 @@
 # Credits: Descriptions for sports equipment below come from Wikipedia
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Category, User, CategoryItem
+from database_setup import Base, Category, User, CategoryItem, init_db
 
-engine = create_engine('postgresql://vagrant:ashok123@localhost/catalog')
+engine = init_db('postgresql://vagrant:ashok123@localhost/catalog')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind = engine)
 session = DBSession()
