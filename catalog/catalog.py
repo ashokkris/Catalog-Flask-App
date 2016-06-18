@@ -16,7 +16,7 @@ from flask import render_template, request, redirect, jsonify, url_for
 from flask import flash, make_response, send_from_directory
 from sqlalchemy import create_engine, asc, desc
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Category, User, CategoryItem
+from database_setup import Base, Category, User, CategoryItem, init_db
 
 app = Flask(__name__)
 APP_PATH = '/var/www/catalog/catalog/'
@@ -29,7 +29,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['APP_PATH'] = APP_PATH
 
 # Connect to Database and create database session
-engine = create_engine('postgresql://vagrant:ashok123@localhost/catalog')
+#engine = create_engine('postgresql://vagrant:ashok123@localhost/catalog')
+engine = init_db('postgresql://vagrant:ashok123@localhost/catalog')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)

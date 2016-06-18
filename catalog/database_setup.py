@@ -79,8 +79,7 @@ class CategoryItem(Base):
        }
        return dictObj
 
-
-engine = create_engine('postgresql://vagrant:ashok123@localhost/catalog')
- 
-
-Base.metadata.create_all(engine)
+def init_db(db_info):
+    engine = create_engine(db_info)
+    Base.metadata.create_all(engine)
+    return engine
