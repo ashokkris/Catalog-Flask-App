@@ -29,7 +29,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['APP_PATH'] = APP_PATH
 
 # Connect to Database and create database session
-engine = init_db('postgresql://vagrant:ashok123@localhost/catalog')
+engine = init_db('postgresql://catalog:catalog123@localhost/catalog')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
@@ -299,11 +299,11 @@ def addItem():
             # can now safely save the image, if any, to server's file system
             if file and imageFile:
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], imageFile))
-        except:
+        except Exception, e:
             session.rollback()
             return ("<script>function myAlert() {alert('Operation Failed! "
                     "Check if you were attempting to add an item with a name "
-                    "that already exists for this category.');}</script> "
+                    "that already exists for this category. {}'.format(str(e)));}</script> "
                     "<body onload='myAlert()' >")
 
         flash('%s successfully added' % newItem.title)
