@@ -299,11 +299,11 @@ def addItem():
             # can now safely save the image, if any, to server's file system
             if file and imageFile:
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], imageFile))
-        except Exception, e:
+        except:
             session.rollback()
             return ("<script>function myAlert() {alert('Operation Failed! "
                     "Check if you were attempting to add an item with a name "
-                    "that already exists for this category. {}'.format(str(e)));}</script> "
+                    "that already exists for this category.');}</script> "
                     "<body onload='myAlert()' >")
 
         flash('%s successfully added' % newItem.title)
