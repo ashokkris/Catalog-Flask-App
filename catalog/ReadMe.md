@@ -62,7 +62,7 @@ was successful
     subscribe to that feed.  
 
 ###Documentation
-* \_\__init_\_\_.py_ - python package initialization code
+* \_\__init_\_\_.py - python package initialization code
 * _database_setup.py_ - python module that declares classes needed to perform  
 our CRUD operations with SQLAlchemy on an Postgresql database (Model)  
 * _database_populate.py_ - python module to create and populate database tables  
